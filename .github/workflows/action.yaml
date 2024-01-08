@@ -1,0 +1,20 @@
+name: Folder-based CI/CD
+
+on:
+  push:
+    paths:
+      - 'folder1/**'  # Trigger on changes within folder1
+      - 'folder2/**'  # Trigger on changes within folder2
+
+jobs:
+  build-folder1:
+    if: github.event_name == 'push' && startsWith(github.event.head_commit.id, >
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build and test Folder 1
+        run: |
+          # Add your build and test commands for folder1
+          echo "Building and testing folder1..."

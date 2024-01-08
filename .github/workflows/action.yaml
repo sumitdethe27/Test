@@ -8,7 +8,7 @@ on:
 
 jobs:
   build-folder1:
-    if: github.event_name == 'push' && startsWith(github.event.head_commit.id, >
+    if: github.event_name == 'push' && startsWith(github.event.head_commit.id, 'refs/heads/main')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -18,3 +18,16 @@ jobs:
         run: |
           # Add your build and test commands for folder1
           echo "Building and testing folder1..."
+
+  build-folder2:
+    if: github.event_name == 'push' && startsWith(github.event.head_commit.id, 'refs/heads/main')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build and test Folder 2
+        run: |
+          # Add your build and test commands for folder2
+          echo "Building and testing folder2..."
+
